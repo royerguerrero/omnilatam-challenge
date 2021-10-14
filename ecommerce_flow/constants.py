@@ -249,3 +249,8 @@ COUNTRIES_CHOICES = (
     ('ZMB', 'Zambia'),
     ('ZWE', 'Zimbabwe'),
 )
+
+NOTIFICATION_METHOD_CHOICES = (
+    ('email', 'Email'),
+    ('sms', 'SMS')
+)

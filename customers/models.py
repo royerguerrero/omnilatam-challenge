@@ -7,7 +7,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Utils
-from ecommerce_flow.constants import COUNTRIES_CHOICES
+from ecommerce_flow.constants import COUNTRIES_CHOICES, NOTIFICATION_METHOD_CHOICES
 
 class Customer(models.Model):
     """Customer Model"""
@@ -39,3 +39,14 @@ class ShippingAddress(models.Model):
     def __str__(self):
         """Returns the complete address"""
         return f'{self.address}, {self.city}({self.state}, {self.country}) {self.zip_code}'
+
+
+class Notification(models.Model):
+    """Notification Model"""
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    content = models.TextField()
+
+    notification_method = models.CharField(max_length=5, choices=NOTIFICATION_METHOD_CHOICES)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
