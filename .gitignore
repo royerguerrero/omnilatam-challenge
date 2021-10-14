@@ -185,3 +185,6 @@ tags
 
 ## Docker
 data/
+
+# Python Decouple
+*/settings.ini

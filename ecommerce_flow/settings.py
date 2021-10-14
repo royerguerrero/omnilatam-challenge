@@ -27,10 +27,21 @@ SECRET_KEY = config('SECRET_KEY', str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', str) 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
+THIRD_PARTY_APPS = [
+    'django_extensions',
+    'rest_framework'
+]
+
+LOCAL_APPS = [
+    'customers',
+    'products',
+    'orders',
+    'payments', 
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+] + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
