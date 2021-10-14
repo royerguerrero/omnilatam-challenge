@@ -1,0 +1,4 @@
+Django
+psycopg2-binary>=2.8
+python-decouple
+django-extensions
