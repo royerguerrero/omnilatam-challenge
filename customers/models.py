@@ -12,6 +12,7 @@ from ecommerce_flow.constants import COUNTRIES_CHOICES, NOTIFICATION_METHOD_CHOI
 class Customer(models.Model):
     """Customer Model"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # TODO: add phone number validator
     number_phone = models.CharField(max_length=10)
     alternative_number_phone = models.CharField(max_length=10)
 

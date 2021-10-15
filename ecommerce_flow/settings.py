@@ -40,7 +40,6 @@ LOCAL_APPS = [
     'customers',
     'products',
     'orders',
-    'payments', 
 ]
 
 INSTALLED_APPS = [

@@ -21,17 +21,6 @@ class Order(models.Model):
 
     products = models.ManyToManyField(Product, through='ProductOrder')
 
-    CHOICES_TYPE = [
-        ('awaiting_payment', 'Waiting for payment'),
-        ('failed_payment', 'Failed payment'),
-        ('preparing_shipment', 'Preparing shipment'),
-        ('on_the_way', 'On the way'),
-        ('delivery_refused', 'Returned order'),
-        ('delivered', 'Delivered'),
-    ]
-
-    status = models.CharField(max_length=50, choices=CHOICES_TYPE)
-    observations = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
