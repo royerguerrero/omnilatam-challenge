@@ -1,21 +1,38 @@
-"""ecommerce_flow URL Configuration
+"""Ecommerce Flow URL Configuration"""
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# Django
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+# Django Rest Framework
+from rest_framework import permissions, routers
+
+# DRF YASG (Swagger, Redoc)
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+# Views
+from products import views as products_views
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title='Ecommerce Flow API',
+        default_version='v1',
+        contact=openapi.Contact(name='Royer Guerrero', email='royjuni3431@gmail.com'),
+        license=openapi.License(name="MIT License")
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,)
+)
+
+router = routers.DefaultRouter()
+router.register('products', products_views.ProductViewSet)
+router.register('categories', products_views.CategoryViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

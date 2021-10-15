@@ -19,12 +19,12 @@ class Payment(models.Model):
         ('bank_transfer', 'Bank transfer'),
     ]
 
-    payment_method = models.CharField(
-        max_length=15, choices=CHOICES_PAYMENT_METHODS)
+    payment_method = models.CharField(max_length=15, choices=CHOICES_PAYMENT_METHODS)
     approved = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """Return the default order string representation."""
         return self.order

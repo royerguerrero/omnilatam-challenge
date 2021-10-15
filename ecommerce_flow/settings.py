@@ -22,7 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', str)
-# SECRET_KEY = 'django-insecure-e74!#%=*y&yy-114#&8fw9ke3e$7$-w@wb3fbi+(a-9ac60hjd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', str) 
@@ -31,9 +30,12 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
+
 THIRD_PARTY_APPS = [
     'django_extensions',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
 ]
 
 LOCAL_APPS = [
@@ -137,3 +139,18 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# API Docs (Swagger, ReDoc)
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Auth Token eg [Bearer]': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
+REDOC_SETTINGS = {
+    'LAZY_RENDERING': False,
+}
