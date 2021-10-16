@@ -8,6 +8,7 @@ class Category(models.Model):
     """Category Model"""
     name = models.CharField(max_length=150)
     description = models.TextField(blank=True)
+    picture = models.ImageField(upload_to='categories')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -16,7 +17,7 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
     def __str__(self):
-        """Returs category name"""
+        """Returns category name"""
         return str(self.name)
 
 

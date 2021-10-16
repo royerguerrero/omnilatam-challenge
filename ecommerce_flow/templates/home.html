@@ -1,33 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <main class="home">
-    <section class="home__hero">
-      <div class="home__wrapper">
-        <h1>Find the best products of premium brands.</h1>
-        <p>Simply the best electronics store of the 21st century, find the best brands at the best price.</p>
-        <div>
-          <a href="">Create an account</a>
-          <a href="">Sign In</a>
+<main class="home">
+  <section class="home__hero">
+    <div class="hero__wrapper shadow">
+      <h1 class="heading heading--awesome text-center">Find the best products of <br>premium brands.</h1>
+      <p class="body body--light text-center">Simply the best electronics store of the 21st century, find <br> the best brands at the best price.</p>
+      <div>
+        <a class="button" href="">Create an account</a>
+        <a class="button button--outline" href="">Sign In</a>
+      </div>
+    </div>
+  </section>
+  <section class="home__categories" id="categories">
+    <div class="categories__header">
+      <h2 class="heading">Categories</h2>
+      <input class="search-bar" type="search" placeholder="Search" >
+    </div>
+    <div class="categories__collection">
+      {% for category in categories %}
+      <div class="category">
+        <picture class="category__picture shadow">
+          <img src="{{ category.picture.url }}" alt="{{ category.name }}">
+        </picture>
+        <div class="category__content">
+          <h3 class="title">{{ category.name }}</h3>
+          <!-- TODO: Implements redirection to category detail using the category.id -->
+          <a class="button" href="">See products</a>
         </div>
       </div>
-    </section>
-    <section class="home__categories">
-      <div class="categories__header">
-        <h2>Categories</h2>
-        <input type="search" placeholder="Search">
-      </div>
-      <div class="categories__collection">
-        <div class="category">
-          <picture class="category__picture">
-            <img src="" alt="Clothes">
-          </picture>
-          <div class="category__content">
-            <h3>Clothes</h3>
-            <a href="">See products</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+      {% endfor %}
+    </div>
+  </section>
+</main>
 {% endblock %}
