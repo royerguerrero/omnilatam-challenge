@@ -3,6 +3,8 @@
 # Django
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 # Django Rest Framework
 from rest_framework import permissions, routers
@@ -12,6 +14,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 # Views
+from ecommerce_flow import views
 from products import views as products_views
 
 
@@ -31,8 +34,9 @@ router.register('products', products_views.ProductViewSet)
 router.register('categories', products_views.CategoryViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.IndexView.as_view(), name='index'),
+    path('admin/', admin.site.urls, name='admin'),
     path('api/', include(router.urls)),
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-]
+    path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='docs-swagger'),
+    path('api/docs/redoc', schema_view.with_ui('redoc', cache_timeout=0), name='docs-redoc'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

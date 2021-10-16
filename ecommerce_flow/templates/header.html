@@ -1,0 +1,13 @@
+{% load static %}
+
+<header class="header">
+  <div class="header__content">
+    <img class="header__brand" src="{% static 'images/Logo.svg' %}" alt="EcommerceFlow Logo">
+    <nav class="header__navbar">
+      <a class="navbar__item" href="{% url 'index' %}">Home</a>
+      <a class="navbar__item" href="{% url 'index' %}">Categories</a>
+      <a class="navbar__item" href="{% url 'index' %}">Track Shipping</a>
+    </nav>
+  </div>
+  <span class="header__cart">Cart (0)</span>
+</header>
