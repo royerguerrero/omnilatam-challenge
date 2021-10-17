@@ -5,6 +5,7 @@ from django.db import models
 
 # Models
 from customers.models import Customer, ShippingAddress
+from orders.models import Shipping 
 from products.models import Product
 
 # Utils
@@ -17,16 +18,14 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     shipping_address = models.ForeignKey(ShippingAddress, on_delete=models.SET_NULL, null=True)
 
-    payment_reference = models.CharField(max_length=100, null=True, default=None)
-
     products = models.ManyToManyField(Product, through='ProductOrder')
-
+    split_payments = models.PositiveSmallIntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     def get_order_price(self):
-        """Returns the order's price?"""
+        """Returns the order's price"""
         total = 0
         products_through = self.products.through.objects.filter(order=self.id)
 
@@ -40,6 +39,7 @@ class ProductOrder(models.Model):
     """ProductOrder model"""
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    shipping = models.ForeignKey(Shipping, on_delete=models.CASCADE, null=True)
 
     quantity = models.PositiveIntegerField()
     price = models.FloatField()

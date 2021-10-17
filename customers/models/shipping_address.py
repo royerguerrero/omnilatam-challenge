@@ -11,9 +11,9 @@ from ecommerce_flow.constants import COUNTRIES_CHOICES
 
 class ShippingAddress(models.Model):
     """Shipping address Model"""
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
-    country = models.CharField(max_length=100, choices=COUNTRIES_CHOICES)
+    country = models.CharField(max_length=3, choices=COUNTRIES_CHOICES)
     state = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     address = models.CharField(max_length=255)

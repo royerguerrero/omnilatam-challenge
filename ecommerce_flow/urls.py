@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.views import LogoutView
 
 # Django Rest Framework
 from rest_framework import permissions, routers
@@ -34,9 +35,12 @@ router.register('products', products_views.ProductViewSet)
 router.register('categories', products_views.CategoryViewSet)
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('admin/', admin.site.urls, name='admin'),
     path('api/', include(router.urls)),
     path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='docs-swagger'),
     path('api/docs/redoc', schema_view.with_ui('redoc', cache_timeout=0), name='docs-redoc'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('login/', views.SingInView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('category/<int:pk>/', products_views.CategoryDetailView.as_view(), name='category_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

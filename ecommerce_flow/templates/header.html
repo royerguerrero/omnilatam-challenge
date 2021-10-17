@@ -7,7 +7,17 @@
       <a class="navbar__item" href="{% url 'index' %}">Home</a>
       <a class="navbar__item" href="{% url 'index' %}#categories">Categories</a>
       <a class="navbar__item" href="{% url 'index' %}">Track Shipping</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="navbar__item navbar__item--logout">Logout</a>
+      {% endif %}
     </nav>
   </div>
-  <span class="header__cart">Cart (0)</span>
+  <div class="header__extra">
+    {% if user.is_authenticated %}
+      <div class="avatar">
+        <p class="avatar__content">Welcome,{% if user.get_full_name %} {{ user.get_full_name }} {% else %} {{ user.username }} {% endif %}</p>
+      </div>   
+    {% endif %}
+    <a class="header__cart">Cart (<span class="cart__counter">0</span>)</a>
+  </div>
 </header>

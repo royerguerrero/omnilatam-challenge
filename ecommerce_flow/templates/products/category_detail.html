@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="category">
+    <section class="category__header" style="background-image: url('{{ category.picture.url }}');">
+        <div class="category__wrapper">
+            <h1 class="heading">{{ category.name }}</h1><br>
+            <div class="body body--light">{{ category.description }}</div>
+        </div>
+    </section>
+    <section class="category__products">
+        {% for product in products %}
+        <a class="product">
+            <picture class="product__picture">
+                <img src="" alt="{{ product.name }}">
+            </picture>
+            <div class="product__content">
+                <h2 class="title">{{ product.name }}</h2>
+                <h3 class="subtitle">{{ product.price }}</h3>
+            </div>
+        </a>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

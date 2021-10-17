@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<main class="login">
+    <div class="login__content">
+        <div>
+            <h1 class="heading">Sign In</h1>
+            <p class="body">Enter your data and access to thousands of different <br> products.</p>
+        </div>
+        <form class="form" action="" method="post">
+            <div class="form__errors">
+                {{ form.errors }}
+            </div>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form__item">
+                    <label class="from__label" for="{{ field.id_for_label }}">{{field.label}}</label>
+                    {{ field }}
+                    <!-- <p class="form__errors">{{ field.errors }}</p> -->
+                </div>        
+            {% endfor %}
+            <button class="button" type="submit">Login</button>
+        </form>
+        <div class="login__links">
+            <a class="link" href="">I don't have an account yet</a>
+            <a class="link" href="">Forgot your password?</a>
+        </div>
+    </div>
+    <div class="login__aside"></div>
+</main>
+{% endblock %}

@@ -5,12 +5,10 @@ from django.db import models
 
 # Models
 from customers.models import ShippingAddress
-from orders.models import ProductOrder
 
 class Shipping(models.Model):
     """Shipping Model"""
     shipping_address = models.ForeignKey(ShippingAddress, on_delete=models.CASCADE)
-    product_order = models.ForeignKey(ProductOrder, on_delete= models.CASCADE)
     
     CHOICES_TYPE = [
         ('awaiting_payment', 'Waiting for payment'),

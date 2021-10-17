@@ -1,3 +1,8 @@
-from django.shortcuts import render
+"""Customers views"""
 
-# Create your views here.
+# Django
+from django.contrib.auth.views import LoginView
+
+
+class SingInView(LoginView):
+    template_name = 'login.html'

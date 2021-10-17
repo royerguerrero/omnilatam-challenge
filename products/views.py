@@ -1,7 +1,7 @@
 """Products views"""
 
 # Django
-from django.shortcuts import render
+from django.views.generic import DetailView
 
 # Django Rest Framework
 from rest_framework import viewsets, permissions
@@ -25,3 +25,14 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = Category
     permission_classes = [permissions.IsAuthenticated]
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = 'products/category_detail.html'
+
+    def get_context_data(self, **kwargs):   
+        context = super(CategoryDetailView, self).get_context_data(**kwargs)
+        context['products'] = Product.objects.filter(category=context['category'])
+        return context
+    
