@@ -6,20 +6,14 @@ from django.db import models
 # Models
 from customers.models import ShippingAddress
 
+# Utils
+from ecommerce_flow.constants import CHOICES_SHIPPING_STATUS
+
 class Shipping(models.Model):
     """Shipping Model"""
     shipping_address = models.ForeignKey(ShippingAddress, on_delete=models.CASCADE)
-    
-    CHOICES_TYPE = [
-        ('awaiting_payment', 'Waiting for payment'),
-        ('failed_payment', 'Failed payment'),
-        ('preparing_shipment', 'Preparing shipment'),
-        ('on_the_way', 'On the way'),
-        ('delivery_refused', 'Returned order'),
-        ('delivered', 'Delivered'),
-    ]
 
-    status = models.CharField(max_length=50, choices=CHOICES_TYPE)
+    status = models.CharField(max_length=50, choices=CHOICES_SHIPPING_STATUS)
     observations = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)

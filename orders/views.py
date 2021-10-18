@@ -34,5 +34,5 @@ class ShippingViewSet(viewsets.ModelViewSet):
     serializer_class = ShippingSerializer 
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['shipping_address', 'approved', 'created_at', 'updated_at',]
+    filterset_fields = ['shipping_address', 'status', 'created_at', 'updated_at',]
     search_fields = ['observations'] 

@@ -254,3 +254,20 @@ NOTIFICATION_METHOD_CHOICES = (
     ('email', 'Email'),
     ('sms', 'SMS')
 )
+
+CHOICES_PAYMENT_METHODS = [
+    ('credit_card', 'Credit card'),
+    ('cash', 'Cash'),
+    ('bitcoin', 'Bitcoin'),
+    ('paypal', 'Paypal'),
+    ('bank_transfer', 'Bank transfer'),
+]
+
+CHOICES_SHIPPING_STATUS = [
+    ('awaiting_payment', 'Waiting for payment'),
+    ('failed_payment', 'Failed payment'),
+    ('preparing_shipment', 'Preparing shipment'),
+    ('on_the_way', 'On the way'),
+    ('delivery_refused', 'Returned order'),
+    ('delivered', 'Delivered'),
+]

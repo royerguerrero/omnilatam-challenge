@@ -8,7 +8,7 @@ from rest_framework import viewsets, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Serializers
-from products.serializers import ProductSerializer
+from products.serializers import CategorySerializer, ProductSerializer
 
 # Models
 from products.models import Product, Category
@@ -27,7 +27,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     """Category API ViewSet"""
     queryset = Category.objects.all()
-    serializer_class = Category
+    serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['created_at', 'updated_at',]

@@ -1,11 +1,12 @@
 """Customers Serializers"""
 
 # Django Rest Framework
+from django.db.models import fields
 from rest_framework import serializers
 
 # Models
 from django.contrib.auth.models import User
-from customers.models import Customer, ShippingAddress
+from customers.models import Customer, ShippingAddress, Notification
 from orders.models import Order
 
 # Serializers
@@ -36,3 +37,9 @@ class CustomerSerializer(serializers.ModelSerializer):
         user = User.objects.create(**validated_data.pop('user'))
         instance = Customer.objects.create(user=user, **validated_data)
         return instance
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = '__all__'

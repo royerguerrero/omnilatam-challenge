@@ -7,6 +7,10 @@ commerce flow.
 ## EcommerceFlow Project
 EcommerceFlow is an online store that sells all kinds of products of premium brands, this consists of a website from where users can buy, an administrator for the staffs of the company and an api for future integrations with the application. 
 
+[Backend Architecture](./backend_architecure.md)
+
+[Design](https://www.figma.com/file/JNMo3L0oLzqeJ42zWjAYFL/EcommerceFlow?node-id=2%3A2)
+
 ### Run Application
 First to run the application you must have the following requirements if you wish to launch the development environment with docker you can omit these requirements.
 

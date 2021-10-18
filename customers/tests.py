@@ -110,3 +110,6 @@ class CustomerViewSetTestCase(APITestCase):
 
     def test_can_delete_customer_shipping_address(self):
         pass
+
+    def test_can_list_customer_notifications(self):
+        pass
