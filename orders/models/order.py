@@ -22,7 +22,7 @@ class Order(models.Model):
     split_payments = models.PositiveSmallIntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def get_order_price(self):
         """Returns the order's price"""
@@ -45,7 +45,7 @@ class ProductOrder(models.Model):
     price = models.FloatField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.quantity} {self.product} for {self.price}'

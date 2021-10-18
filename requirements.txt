@@ -7,3 +7,5 @@ markdown
 django-filter
 drf-yasg
 Pillow
+model_mommy
+coverage

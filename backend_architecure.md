@@ -12,3 +12,6 @@ A company requires a relational database to manage users, products, orders, paym
 ## Architecture
 ### Entity Relational Modeling
 <img src="./ecommerce-flow.jpeg" />
+
+### Endpoints 
+- Products -> `/api/products/`

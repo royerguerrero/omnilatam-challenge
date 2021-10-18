@@ -1,11 +1,11 @@
-"""User Model: Actually in this file I'm only going to create a signal for DRF token"""
+"""User Model, Actually in this file I'm only going to create a signal for DRF token"""
 
 # Django
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-# Django Rest Framework
+#  Models
 from rest_framework.authtoken.models import Token
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

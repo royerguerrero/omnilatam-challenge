@@ -20,7 +20,7 @@ class ShippingAddress(models.Model):
     zip_code = models.CharField(max_length=5, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = 'shipping address'

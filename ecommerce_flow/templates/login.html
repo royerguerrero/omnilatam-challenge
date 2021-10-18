@@ -9,16 +9,18 @@
             <p class="body">Enter your data and access to thousands of different <br> products.</p>
         </div>
         <form class="form" action="" method="post">
+            {% if form.errors %}
             <div class="form__errors">
                 {{ form.errors }}
             </div>
+            {% endif %}
             {% csrf_token %}
             {% for field in form %}
-                <div class="form__item">
-                    <label class="from__label" for="{{ field.id_for_label }}">{{field.label}}</label>
-                    {{ field }}
-                    <!-- <p class="form__errors">{{ field.errors }}</p> -->
-                </div>        
+            <div class="form__item">
+                <label class="from__label" for="{{ field.id_for_label }}">{{field.label}}</label>
+                {{ field }}
+                <!-- <p class="form__errors">{{ field.errors }}</p> -->
+            </div>
             {% endfor %}
             <button class="button" type="submit">Login</button>
         </form>

@@ -27,6 +27,12 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     price = models.FloatField()
 
+    picture1 = models.ImageField(upload_to='products')
+    picture2 = models.ImageField(upload_to='products')
+    picture3 = models.ImageField(upload_to='products')
+    # TODO: Add validator for youtube video
+    video = models.URLField()
+
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     stock = models.PositiveIntegerField(default=0)
@@ -36,5 +42,5 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        """Returs product name"""
+        """Returns product name"""
         return str(self.name)

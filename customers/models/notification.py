@@ -17,4 +17,4 @@ class Notification(models.Model):
     notification_method = models.CharField(max_length=5, choices=NOTIFICATION_METHOD_CHOICES)
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)

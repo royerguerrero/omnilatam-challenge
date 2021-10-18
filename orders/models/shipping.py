@@ -23,4 +23,4 @@ class Shipping(models.Model):
     observations = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)

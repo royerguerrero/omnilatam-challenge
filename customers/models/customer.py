@@ -14,9 +14,9 @@ class Customer(models.Model):
     number_phone = models.CharField(max_length=20)
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Returns customer's name"""
-        return str(self.user.get_fullname())
+        return str(self.user.get_full_name())
 
